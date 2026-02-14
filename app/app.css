@@ -13,3 +13,135 @@ body {
     color-scheme: dark;
   }
 }
+
+.debug {
+  border: 1px solid red;
+}
+
+.outer-container {
+  padding: 4em;
+}
+
+.table-container {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.table-row {
+  display: flex;
+  flex-direction: row;
+  gap: 4em;
+  margin-bottom: 1em;
+}
+
+/* Modern Table Styles */
+.models-table {
+  width: 100%;
+  border-collapse: separate;  /* Allows gaps between columns */
+  border-spacing: 0 8px;      /* Horizontal and vertical gaps */
+  margin: 1rem 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Header Styling */
+.models-table thead tr {
+  border-radius: 2px;
+}
+
+.models-table th {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: rgb(255, 171, 44);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;        /* Prevents header text wrapping */
+}
+
+/* Add border radius to first and last header cells */
+.models-table th:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.models-table th:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Row Styling */
+.models-table tbody tr {
+  background: white;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+
+/* Cell Styling */
+.models-table td {
+  padding: 1.25rem 1.5rem;
+  font-size: 0.95rem;
+  color: #2d3748;
+  border-bottom: 1px solid #edf2f7;
+  background: white;
+}
+
+/* Add gaps between columns */
+.models-table td {
+  border-right: 3px solid #f7fafc;  /* Creates visible gap between columns */
+}
+
+.models-table td:last-child {
+  border-right: none;  /* Remove border from last column */
+}
+
+/* Column-specific styling for better readability */
+.models-table td:nth-child(1) { /* Date column */
+  font-weight: 500;
+  color: #4a5568;
+  white-space: nowrap;
+}
+
+.models-table td:nth-child(2) { /* Model column */
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.models-table td:nth-child(3) { /* Description column */
+  max-width: 250px;
+  line-height: 1.5;
+  color: #4a5568;
+}
+
+.models-table td:nth-child(4) { /* Dataset column */
+  font-family: monospace;
+  border-radius: 4px;
+}
+
+.models-table td:nth-child(5), /* Training Code */
+.models-table td:nth-child(6) { /* Eval Results */
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Link styling for Training Code and Eval Results */
+.models-table td:nth-child(5) a,
+.models-table td:nth-child(6) a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.models-table td:nth-child(5) a:hover,
+.models-table td:nth-child(6) a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
