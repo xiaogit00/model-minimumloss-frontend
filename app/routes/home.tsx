@@ -40,33 +40,19 @@ export default function Home() {
     }
   };
 
-  if (loading) return <div className="loading">Loading users...</div>;
+  if (loading) return <div className="loading m-8">Loading models...</div>;
   if (error) return <div className="error">Error: {error}</div>;
 
   return (
     <div className="outer-container">
-      <table className="models-table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Model</th>
-            <th>Description</th>
-            <th>Dataset</th>
-            <th>Training Code</th>
-            <th>Eval Results</th>
-          </tr>
-        </thead>
+      <table className="table-fixed w-full border-separate border-spacing-y-2">
         <tbody>
           {models.map(model => (
             <TableRow key={model.slug} model={model} />
           ))}
         </tbody>
       </table>
-      {/* <div className="table-container">
-        {models.map(model => (
-          <TableRow key={model.slug} model={model} />
-        ))}
-      </div> */}
+
     </div>
   );
 }
