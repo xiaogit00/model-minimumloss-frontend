@@ -4,8 +4,8 @@ import TableRow from "~/components/TableRow";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Models | MinimumLoss" },
+    { name: "description", content: "A home for all the models that I've trained"},
   ];
 }
 
