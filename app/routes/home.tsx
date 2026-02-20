@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Route } from "./+types/home";
 import TableRow from "~/components/TableRow";
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,45 +10,28 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-
-
 export default function Home() {
-  const [models, setModels] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
 
-  useEffect(() => {
-    fetchModels()
-  }, [])
+  async function fetchModels() {
+    const res = await fetch('http://127.0.0.1:8000/models');
+    return res.json();
+  }
+    const { data, isLoading, error } = useQuery({
+      queryKey: ["modelsData"],
+      queryFn: fetchModels,
+      staleTime: 1000 * 60 * 5,
+      refetchOnWindowFocus: false,
+    });
 
-    const fetchModels = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch('http://127.0.0.1:8000/models');
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      setModels(data);
-      setError(null);
-    } catch (err) {
-      setError(err.message);
-      console.error('Error fetching users:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (loading) return <div className="loading m-8">Loading models...</div>;
-  if (error) return <div className="error">Error: {error}</div>;
+    if (isLoading) return <p>Loading...</p>;
+    if (error) return <p>Error loading data</p>;
+    console.log(data)
 
   return (
     <div className="outer-container">
       <table className="table-fixed w-full border-separate border-spacing-y-2">
         <tbody>
-          {models.map(model => (
+          {data?.map((model) => (
             <TableRow key={model.slug} model={model} />
           ))}
         </tbody>
