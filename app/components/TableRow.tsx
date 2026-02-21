@@ -4,7 +4,11 @@ export default function TableRow({ model }) {
     const datasetName = model[1]
     const modelName = model[2]
     const dateStr = model[3];
-    const modelSlug = model[4]
+    const blogLink = model[4]
+    const tags = model[5]
+    const modelSlug = model[6]
+    
+    
     // Parse the string: dd(18), mon(feb), yy(26)
     const day = parseInt(dateStr.substring(0, 2));
     const monthStr = dateStr.substring(2, 5);
@@ -24,8 +28,8 @@ export default function TableRow({ model }) {
 
       {/* MODEL NAME */}
       <td className="w-1/4 truncate px-2">
-        {datasetName + " " + modelName} {modelId ? (
-          <a className='text-gray-700' href={modelId}
+        {datasetName + " " + modelName} {blogLink ? (
+          <a className='text-gray-700' href={blogLink}
           target="_blank" rel="noopener noreferrer">(Thoughts)</a>
       ) : ""}</td>
       
@@ -46,7 +50,7 @@ export default function TableRow({ model }) {
       
       <td className="w-2/12 ">| <a className='text-gray-700' href={modelSlug + "/training-code"}>Training Code </a></td>
       <td className="w-1/12">|<a className='text-gray-700' href={modelSlug + "/eval-results"}>Eval Results </a></td>
-      <td className="w-2/12 truncate pl-16">Tags: CNN, ShallowNN</td>
+      <td className="w-2/12 truncate pl-16">Tags: {tags.join(", ")}</td>
     </tr>
   )
 }
