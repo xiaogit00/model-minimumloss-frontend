@@ -32,7 +32,7 @@ export default function Home() {
       <table className="table-fixed w-full border-separate border-spacing-y-2">
         <tbody>
           {data?.map((model) => (
-            <TableRow key={model.slug} model={model} />
+            <TableRow key={model[4]} model={model} />
           ))}
         </tbody>
       </table>
@@ -40,3 +40,5 @@ export default function Home() {
     </div>
   );
 }
+
+// Model Res: [('1', 'MNISTFashion', 'shallowNN', '18FEB26'), ('2', 'MNISTFashion', 'deepNN', '21FEB26')]

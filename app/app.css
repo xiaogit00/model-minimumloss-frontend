@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --font-sans: "Arial", ui-sans-serif, system-ui, sans-serif,
@@ -15,10 +16,12 @@ body {
 }
 
 .shiki {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   padding-left: 2rem; /* Adjust the value as needed */
   /* Optional, for better display */
   overflow-x: auto;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 .debug {

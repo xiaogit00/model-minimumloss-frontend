@@ -6,18 +6,18 @@ import { useShikiHighlighter } from "react-shiki";
 
 
 export async function loader({ params }: Route.LoaderArgs) {
-  let modelData = await fetch('http://127.0.0.1:8000/models/' + params.modelSlug + "/definition");
-  return modelData;
+  let training_code_data = await fetch('http://127.0.0.1:8000/models/' + params.modelSlug + "/training-code");
+  return training_code_data;
 }
 
-export default function ModelDefinition({
+export default function TrainingCode({
   loaderData,
 }: Route.ComponentProps) {
-    const model_code = loaderData
-    const highlightedCode = useShikiHighlighter(model_code, 'python', "catppuccin-latte");
+    const training_code = loaderData
+    const highlightedCode = useShikiHighlighter(training_code, 'python', "catppuccin-latte");
   return (
     <div className="outer-container ">
-      <div className="text-2xl mb-4"></div>
+      <div className="text-2xl mb-4 "></div>
       <div className="overflow-x-auto"> <div className="code-block">{highlightedCode}</div></div>
     </div>
   );
