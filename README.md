@@ -1,4 +1,4 @@
-# Models.minimumloss.xyz
+# Model.minimumloss.xyz
 
 This is a house for all the models that I've trained. This is a react router project, with the following pages. Each of these pages basically render the files in the folders in the backend:
 
