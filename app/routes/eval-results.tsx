@@ -2,22 +2,21 @@
 import type { Route } from "./+types/team";
 import { useShikiHighlighter } from "react-shiki";
 import { useState } from "react";
+import { API_BASE_URL } from '~/config';
 
 
 
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const training_code_res = await fetch(
-    `http://127.0.0.1:8000/models/${params.modelSlug}/eval-results`
-  );
 
+  let training_code_res = await fetch(`${API_BASE_URL}/models/${params.modelSlug}/eval-results`);
   const training_code_data = await training_code_res.text(); 
 
   return {
     training_code_data,
-    loss_chart_url: `http://127.0.0.1:8000/models/${params.modelSlug}/loss-chart`,
-    errors_chart_url: `http://127.0.0.1:8000/models/${params.modelSlug}/errors-chart`,
-  };
+    loss_chart_url: `/api/models/${params.modelSlug}/loss-chart`,
+    errors_chart_url: `/api/models/${params.modelSlug}/errors-chart`,
+};
 }
 
 export default function EvalResults({

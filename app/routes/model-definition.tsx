@@ -1,12 +1,13 @@
 // provides type safety/inference
 import type { Route } from "./+types/team";
 import { useShikiHighlighter } from "react-shiki";
+import { API_BASE_URL } from '~/config';
 
 
 
 
 export async function loader({ params }: Route.LoaderArgs) {
-  let modelData = await fetch('http://127.0.0.1:8000/models/' + params.modelSlug + "/definition");
+  let modelData = await fetch(`${API_BASE_URL}/models/${params.modelSlug}/definition`);
   return modelData;
 }
 

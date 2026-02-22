@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Route } from "./+types/home";
 import TableRow from "~/components/TableRow";
 import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { API_BASE_URL } from '~/config';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -13,7 +14,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
 
   async function fetchModels() {
-    const res = await fetch('http://127.0.0.1:8000/models');
+    let res = await fetch(`${API_BASE_URL}/models`);
     return res.json();
   }
     const { data, isLoading, error } = useQuery({
