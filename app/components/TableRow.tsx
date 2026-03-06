@@ -7,7 +7,7 @@ export default function TableRow({ model }) {
     const blogLink = model[4]
     const tags = model[5]
     const modelSlug = model[6]
-    
+    const has_playground = model[7]
     
     // Parse the string: dd(18), mon(feb), yy(26)
     const day = parseInt(dateStr.substring(0, 2));
@@ -28,7 +28,8 @@ export default function TableRow({ model }) {
 
       {/* MODEL NAME */}
       <td className="w-1/4 truncate px-2">
-        {datasetName + " " + modelName} {blogLink ? (
+        {has_playground ? <a href={"/" + modelSlug + "/image-classifier"}>{datasetName + " " + modelName}</a>
+        : datasetName + " " + modelName} {blogLink ? (
           <a className='text-gray-700' href={blogLink}
           target="_blank" rel="noopener noreferrer">(Thoughts)</a>
       ) : ""}</td>

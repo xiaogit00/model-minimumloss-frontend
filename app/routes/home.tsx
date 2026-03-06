@@ -27,7 +27,6 @@ export default function Home() {
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error loading data</p>;
     console.log(data)
-
   return (
     <div className="outer-container">
       <table className="table-fixed w-full border-separate border-spacing-y-2">
