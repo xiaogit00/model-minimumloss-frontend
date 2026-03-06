@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-
+import { API_BASE_URL } from '~/config';
 
 
 async function fetchImageAsBase64(url) {
@@ -60,7 +60,7 @@ export default function ImageGallery() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/models/mnistfashion_test_images")
+    fetch(`${API_BASE_URL}/models/mnistfashion_test_images`)
       .then((res) => res.json())
       .then((data) => {
         const loaded = data.images.map((path, i) => ({
