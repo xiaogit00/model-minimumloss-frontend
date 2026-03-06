@@ -65,8 +65,8 @@ export default function ImageGallery() {
       .then((data) => {
         const loaded = data.images.map((path, i) => ({
           id: i + 1,
-          src: `http://127.0.0.1:8000${path}`,
-          thumb: `http://127.0.0.1:8000${path}`,
+          src: `${API_BASE_URL}${path}`,
+          thumb: `${API_BASE_URL}${path}`,
           label: `Frame ${String(i + 1).padStart(2, "0")}`,
         }));
         setImages(loaded);
